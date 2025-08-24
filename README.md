@@ -1,69 +1,143 @@
-# Legolas - An Open Source Bipedal Robot
+# Rob4RL - Robot for Reinforcement Learning
 
-Legolas is a mini bipedal robot inspired by the Cassie by Agility Robotics. The project aims to provide an open-source platform for learning and applying reinforcement learning in robotics.
+Rob4RL is a student project which aims to explore the feasibilty of low-cost bipedal robotics for the learning robust, sim2real applicable reinforcement learning based locomotion policies.
 
-<p align="center">
-  <img src="assets/cover_image_front.jpg" width="400" />
-  <img src="assets/cover_image_back.jpg" width="400" />
-</p>
+It has been built upon the work of David Ho, the original creator of the Legolas bipedal walker.
 
 <p align="center">
-  <a href="assets/Walking_Test_3.mp4"><img src="assets/Walking_Test_3.gif" alt="Video 3" width="800"></a>
+  <img src="Legolas/assets/cover_image_front.jpg" width="400" />
+  <img src="Legolas/assets/cover_image_back.jpg" width="400" />
 </p>
 
 ## Repository Contents
 
-This repository contains CAD files and 3D printing files for Legolas. 
+This repository contains forked CAD and 3D printing files for Legolas.
 
-The code for the robot is available at [Legolas Controller](https://github.com/daviddoo02/Legolas_Controller).
+It also contains small calibration/test python code snippets for I2C communication and test of the servos. Note that the current control code is only on prototype level - use with caution.
+
+It will be updated regulary with the likes of model-based control, simulation testing and RL training code, likely in Isaac Sim/Lab.
+
+Original Robot Design [Legolas Robot](https://github.com/daviddoo02/Legolas-an-open-source-biped/).
+
+Original Robot Code [Legolas Controller](https://github.com/daviddoo02/Legolas_Controller).
 
 ## Getting Started
 
 1. **Clone this repository:**
 
     ```bash
-    git clone https://github.com/daviddoo02/Legolas-an-open-source-biped/
+    git clone https://github.com/TEKG1t/Rob4RL.git
     ```
 
-2. **Modify the CAD files:**
+2. **Modify CAD or 3D Print the robot:**
+  - Original SolidWorks files are provided in `Legolas/CAD` for modification
+  - STL files are located in `Legolas/STLs` to 3D print your own robot, see assembly instuctions
 
-    Modify the CAD files to fit your specific needs using Solidworks.
+3. **Assemble the robot**
+  - See assembly instuctions
 
-3. **3D Print your own robot:**
+4. **TODO Next Steps**
+  - Lets see if I am allowed to upload the intermediate milestone paper :)
+  - Modified main body, actuator model for servos and model-based control
 
-    Alternatively, use the provided STL files located in `CAD/Legolas/V2/STLs` to 3D print your own robot.
-
-4. **Assemble the robot and have fun!**
+<p align="center">
+  <img src="assets/Data.png" width="400" />
+</p>
 
 ## Required Materials
 
-Materials and components used are listed and linked below.
+Original BOM with Amazon Links is shown in the original README of the Legolas Robot.
 
-### Main Body
+My Robot is using a Nvidia Jetson Orin Nano Super DevKit as Controller although a simple RL policy should be able to run on a raspy as well.
 
-1. [3D printing filament x 1 kg](https://www.amazon.com/dp/B089S1HB8K)
-2. [Metric Nuts and Bolts](https://www.amazon.com/Assortment-M2-M3-M4-M5/dp/B0CBMMPPKF)
-3. [Metric Locknuts](https://www.amazon.com/dp/B0CHVTYLWC)
-4. [Thrust Bearings](https://www.amazon.com/gp/product/B08FHTD8VT)
-5. [Ball joint rod end](https://www.amazon.com/gp/product/B0828T1NNW)
-6. [M4 threaded rod](https://www.amazon.com/gp/product/B01MAYQ12S)
+I am using 35kgcm instead of 40kgcm and 60kgcm instead of 80kgcm servos of similar standardized size because of hardware availability.
 
-### Electronics
+| **Type**      | **Specification** | **Value**                     |
+|---------------|-------------------|-------------------------------|
+|               | Height            | 50cm                          |
+| General       | Weight            | 3kg                           |
+|               | Material          | PLA                           |
+|               | Cost              | 1500€                         |
+|               | Name              | Nvidia Jetson Orin Nano       |
+| Controller    | Storage           | 500GB NVME M.2                |
+|               | 35kgcm Servo      | 8120MG 180°                   |
+| Actuators     | 60kgcm Servo      | DS5160 SSG 270°               |
+|               | Servo driver      | PCA9685                       |
+| Sensors       | IMU               | MPU6050                       |
 
-1. [Raspberry Pi 4](https://www.amazon.com/Raspberry-Model-2019-Quad-Bluetooth/dp/B07TC2BK1X)
-2. [PCA9685 Servo Driver Board](https://www.amazon.com/gp/product/B07BRS249H)
-3. [40 kg Hobby Servos x 8](https://www.amazon.com/Servo-Torque-Waterproof-Degree-Compatible/dp/B0C95YMMQS)
-4. [80 kg Hobby Servos x 2](https://www.amazon.com/GoolRC-Digital-Torque-Waterproof-Replacements/dp/B0B5H4MWZG/ref=sr_1_2?crid=1JM9GBMY97KTM&keywords=80%2Bkg%2Bservo&qid=1705472455&sprefix=80%2Bkg%2Bservo%2Caps%2C98&sr=8-2&th=1)
-5. [MPU6050 IMU](https://www.amazon.com/Acceleration-Sensors-Accelerometer-Three-Axis-Quadcopter/dp/B07V67DQ5N)
-6. [ADS1115 ADC](https://www.amazon.com/gp/product/B07VPFLSMX)
-7. [Jumper Wires](https://www.amazon.com/Elegoo-EL-CP-004-Multicolored-Breadboard-arduino/dp/B01EV70C78)
-8. [Power DIY Connector](https://www.amazon.com/dp/B09S3S6RYC)
-9. [USB C Connector](https://www.amazon.com/dp/B0CCJRWKC5)
-10. [4 to 1 Wire Connector](https://www.amazon.com/dp/B0B28GNVGZ)
+Note: General Robot values are estimates for now.
 
 ## Assembly Instruction
 
-Instructions and examples for assembling Legolas will be added in future updates.
+This section summarizes the assembly of one Legolas left leg.  
+
+### 3D Printing BOM
+Start by printing the STL files under `Legolas/STLs`. Some parts need to be mirrored for the right leg. Optional TPU shoes can be added for extra grip.
+
+| **Part Name**             | **Amount** | **Mirror for right leg** |
+|----------------------------|------------|---------------------------|
+| Main body.stl              | 1          |                           |
+| Hip 1 A.stl                | 1          | x                         |
+| Hip 1 B.stl                | 1          | x                         |
+| Hip 2.stl or Pitch A + B   | 1          | x                         |
+| Thigh Inner.stl            | 1          |                           |
+| Thigh Outer.stl            | 1          |                           |
+| Foreleg A.stl              | 1          | x                         |
+| Foreleg B + C.stl          | 1          |                           |
+| Shin.stl                   | 1          |                           |
+| Servo Cover.stl            | 1          |                           |
+| Foot.stl                   | 1          | x                         | 
+
+Recommended print settings (I used Cura):
+- Walls: min 4 lines for strength  
+- Infill: slightly higher than default  
+- Wall order: inside → outside  
+
+One leg weighs ~184g, takes ~15h to print, and ~2–3h to assemble.  
+
+### Servo & Mechanical Assembly
+Each leg uses:
+- 3 × 40 kg·cm servos (hip)  
+- 1 × 80 kg·cm servo (knee)  
+- 1 × 40 kg·cm servo (foot)  
+
+Prototype tested with 35 kg·cm and 60 kg·cm servos (still compatible).  
+Cut threaded rods to:  
+- 85 mm (upper transmission bar)  
+- 80 mm (lower bar)  
+
+Refer to the hardware BOM for screws, nuts, and bearings.
+All screws default to cylinder head unless specified. Slight over-provisioning ensures successful assembly during prototyping. The original designer recommends purchasing a metric nuts and bolts assortment kit.
+
+| **Amount** | **Part Name**              | **Usage**                          |
+|------------|-----------------------------|------------------------------------|
+| 6          | AXK0619 Bearings            | Joints                             |
+| 4          | M4 ball rod ends            | Joint transmission                 |
+| 2          | M4 threaded rod             | Joint transmission; cut to length  |
+| 5          | M3x8                        | Servo shaft to servo               |
+| 5          | M3x10                       | Servo shaft to print               |
+| 4          | M3x16                       | Hip 2 A+B                          |
+| 1          | M3x20                       | Foot servo shaft                   |
+| 1          | M3x25 drop forge screw      | Hip-thigh rod                      |
+| 16         | M4x12                       | 35kgcm servo mounting              |
+| 2          | M4x20                       | Passive hip-thigh joint            |
+| 2          | M4x35                       | Foreleg-shin joint                 |
+| 1          | M4x40                       | Final foreleg-shin joint           |
+| 4          | M5x12                       | 60kgcm servo mounting              |
+| 1          | M6x16                       | Hip joint                          |
+| 1          | M6x16 drop forge screw      | Hip joint                          |
+| 2          | M3 locking nuts             | Shaft and joint locking            |
+| 5          | M4 locking nuts             | Transmission/bar locking           |
+| 6–11       | M4 nuts                     | Transmission/bar locking           |
+| 2          | M6 locking nuts             | Hip joint mounting                 |
+| 3          | M3 washers                  | Passive joint load distribution    |
+| 1          | M4 washer                   | Passive joint load distribution    |
+
+Use zip ties or wraps for cable management. See assembly image for reference.  
+
+<p align="center">
+  <img src="assets/LeftLegAssembly.png" width="400" />
+</p>
 
 ## License
 
@@ -71,5 +145,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Acknowledgments
 
-- Inspired by the Cassie robot by Agility Robotics.
-- Solidworks was used for the physical design of the robot.
+- Thanks to Berkeley Humanoid (Lite) projects which inspired this research
+- Thanks to David Ho, the original creator of the Legolas robot
+- The Legolas robot is inspired by the Cassie robot by Agility Robotics.
